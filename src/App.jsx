@@ -1,33 +1,39 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { createBrowserRouter,RouterProvider } from 'react-router-dom'
+import Navbar from './Components/Navbar.jsx'
+import News from './Components/News'
+import Home from './Components/Home'
+import Bussiness from './Components/Bussiness'
+import Culture from './Components/Culture'
+import Earth from './Components/Earth'
+import Innovation from './Components/Innovation'
+import Sport from './Components/Sport'
+import Travel from './Components/Travel'
+import NewsDetail from './Components/NewsDetail'
+import AllNews from './Components/AllNews'
+
+import Bottom from './Components/Bottom'
+
+
 
 function App() {
-  const [count, setCount] = useState(0)
+
+  const router=createBrowserRouter([
+    {path:"/", element:<><Navbar/><AllNews/></>},
+    {path:"/news", element:<><Navbar/><News/></>},
+    {path:"/sport", element:<><Navbar/><Sport/></>},
+    {path:"/bussiness", element:<><Navbar/><Bussiness/></>},
+    {path:"/innovation", element:<><Navbar/><Innovation/></>},
+    {path:"/culture", element:<><Navbar/><Culture/></>},
+    {path:"/travel", element:<><Navbar/><Travel/></>},
+    {path:"/earth", element:<><Navbar/><Earth/></>},
+    
+  ])
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+       <RouterProvider router={router}/>
+      <Bottom/>
+       
     </>
   )
 }
